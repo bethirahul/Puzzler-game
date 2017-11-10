@@ -5,11 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 424718}
-  - 114: {fileID: 11459972}
-  - 114: {fileID: 1811292958}
+  - component: {fileID: 424718}
+  - component: {fileID: 11459972}
+  - component: {fileID: 1811292958}
   m_Layer: 0
   m_Name: GvrControllerMain
   m_TagString: Untagged
@@ -26,10 +26,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11459972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -41,8 +41,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adde9bdea083943199c7959004756e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableGyro: 1
-  enableAccel: 1
   emulatorConnectionMode: 1
 --- !u!1001 &100100000
 Prefab:
@@ -70,5 +68,7 @@ MonoBehaviour:
   addedElbowDepth: 0
   pointerTiltAngle: 15
   fadeDistanceFromFace: 0.32
+  tooltipMinDistanceFromFace: 0.45
+  tooltipMaxAngleFromCamera: 80
   followGaze: 1
   useAccelerometer: 0

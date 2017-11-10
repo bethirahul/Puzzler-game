@@ -5,10 +5,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 434824}
-  - 114: {fileID: 11461060}
+  - component: {fileID: 434824}
+  - component: {fileID: 11461060}
   m_Layer: 0
   m_Name: GvrAudioSource
   m_TagString: Untagged
@@ -28,6 +28,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11461060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,20 +40,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dbca64e524ea44f9b26142ec59aca8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bypassRoomEffects: 0
   directivityAlpha: 0
   directivitySharpness: 1
+  listenerDirectivityAlpha: 0
+  listenerDirectivitySharpness: 1
   gainDb: 0
   occlusionEnabled: 0
   playOnAwake: 1
-  rolloffMode: 0
   sourceClip: {fileID: 0}
   sourceLoop: 1
   sourceMute: 0
   sourcePitch: 1
+  sourcePriority: 128
+  sourceSpatialBlend: 1
+  sourceDopplerLevel: 1
+  sourceSpread: 0
   sourceVolume: 1
+  sourceRolloffMode: 0
   sourceMaxDistance: 500
   sourceMinDistance: 1
   hrtfEnabled: 1
+  audioSource: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
