@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameLogic : MonoBehaviour
 {
-	public GameObject startUI, restartUI;
+	/*public GameObject startUI, restartUI;
 
 	public void ToggleUI()
 	{
@@ -15,5 +15,27 @@ public class GameLogic : MonoBehaviour
 	public void PlayerSelection(GameObject sphere)
 	{
 		// Will be completed later in the course.
+	}*/
+
+
+	public GameObject startUI, finishUI;
+
+	public void startGame()
+	{
+		startUI.SetActive (false);
+		finishUI.SetActive (true);
+		initGame ();
+	}
+
+	public void restartGame ()
+	{
+		finishUI.SetActive (false);
+		startUI.SetActive (true);
+		initGame ();
+	}
+
+	private void initGame()
+	{
+		Debug.Log ("Game Initiated");
 	}
 }
