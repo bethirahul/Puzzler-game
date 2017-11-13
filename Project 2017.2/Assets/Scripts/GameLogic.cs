@@ -21,6 +21,10 @@ public class GameLogic : MonoBehaviour
 	public GameObject player;
 	public GameObject startUI, finishUI;
 	public GameObject startPoint, playPoint, finishPoint;
+	public GameObject[] puzzleSphere;
+	public int numOfSpheres = 5;
+	private int[] sequenceOrder;
+	public float puzzleAnimSpeed = 1.0f;
 
 	public void startGame()
 	{
@@ -45,6 +49,8 @@ public class GameLogic : MonoBehaviour
 	private void initGame()
 	{
 		player.transform.position = startPoint.transform.position;
+		//createPuzzleSequence ();
+
 	}
 
 	void Start()
@@ -52,6 +58,8 @@ public class GameLogic : MonoBehaviour
 		// Update 'player' to be the camera's parent gameobject, i.e. GvrEditorEmulator, instead of the camera itself.
 		// Required because GVR resets camera position to 0, 0, 0.
 		// player = player.transform.parent.gameObject;
+
+		sequenceOrder = new int[numOfSpheres];
 
 		// Move player to the start position.
 		initGame();
