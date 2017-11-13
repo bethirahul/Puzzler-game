@@ -18,13 +18,21 @@ public class GameLogic : MonoBehaviour
 	}*/
 
 
+	public GameObject player;
 	public GameObject startUI, finishUI;
+	public GameObject startPoint, playPoint, finishPoint;
 
 	public void startGame()
 	{
 		startUI.SetActive (false);
-		finishUI.SetActive (true);
 		initGame ();
+		iTween.MoveTo(player,
+			iTween.Hash(
+				"position", playPoint.transform.position,
+				"time", 2,
+				"easetype", "linear"
+			)
+		);
 	}
 
 	public void restartGame ()
@@ -36,6 +44,39 @@ public class GameLogic : MonoBehaviour
 
 	private void initGame()
 	{
-		Debug.Log ("Game Initiated");
+		player.transform.position = startPoint.transform.position;
 	}
+
+	void Start()
+	{
+		// Update 'player' to be the camera's parent gameobject, i.e. GvrEditorEmulator, instead of the camera itself.
+		// Required because GVR resets camera position to 0, 0, 0.
+		// player = player.transform.parent.gameObject;
+
+		// Move player to the start position.
+		initGame();
+	}
+
+	void Update()
+	{
+		if (Input.GetMouseButtonDown(0) && player.transform.position == playPoint.transform.position)
+		{
+			gameWon();
+		}
+	}
+
+	public void gameWon()
+	{
+		iTween.MoveTo(player,
+			iTween.Hash(
+				"position", finishPoint.transform.position,
+				"time", 2,
+				"easetype", "linear"
+			)
+		);
+		finishUI.SetActive (true);
+	}
+
+
+
 }
