@@ -3,55 +3,13 @@ using System.Collections;
 
 public class GameLogic : MonoBehaviour
 {
-	/*public GameObject startUI, restartUI;
-
-	public void ToggleUI()
-	{
-		startUI.SetActive(!startUI.activeSelf);
-		restartUI.SetActive(!restartUI.activeSelf);
-	}
-
-	// Placeholder method to prevent compiler errors caused by this method being called from LightUp.cs.
-	public void PlayerSelection(GameObject sphere)
-	{
-		// Will be completed later in the course.
-	}*/
-
-
 	public GameObject player;
 	public GameObject startUI, finishUI;
 	public GameObject startPoint, playPoint, finishPoint;
 	public GameObject[] puzzleSphere;
-	public int numOfSpheres = 5;
+	private int numOfSpheres = 5;
 	private int[] sequenceOrder;
 	public float puzzleAnimSpeed = 1.0f;
-
-	public void startGame()
-	{
-		startUI.SetActive (false);
-		initGame ();
-		iTween.MoveTo(player,
-			iTween.Hash(
-				"position", playPoint.transform.position,
-				"time", 2,
-				"easetype", "linear"
-			)
-		);
-	}
-
-	public void restartGame ()
-	{
-		finishUI.SetActive (false);
-		startUI.SetActive (true);
-		initGame ();
-	}
-
-	private void initGame()
-	{
-		player.transform.position = startPoint.transform.position;
-		//createPuzzleSequence ();
-
-	}
 
 	void Start()
 	{
@@ -62,7 +20,43 @@ public class GameLogic : MonoBehaviour
 		sequenceOrder = new int[numOfSpheres];
 
 		// Move player to the start position.
-		initGame();
+		player.transform.position = startPoint.transform.position;
+	}
+
+	public void startGame()
+	{
+		startUI.SetActive(false);
+		initGame ();
+	}
+
+	public void restartGame()
+	{
+		finishUI.SetActive(false);
+		initGame ();
+	}
+
+	private void initGame()
+	{
+		movePlayerToPoint(playPoint.transform.position);
+		for (int i = 0; i < numOfSpheres; i++)
+		{
+			sequenceOrder[i] = Random.Range(0, numOfSpheres);
+		}
+		Debug.Log ("The puzzle sequence is " + sequenceOrder[0] + ", " + sequenceOrder[1] + ", " + sequenceOrder[2] + ", " + sequenceOrder[3] + ", " + sequenceOrder[4]);
+	}
+
+	private void movePlayerToPoint(Vector3 point)
+	{
+		iTween.MoveTo
+		(
+			player,
+			iTween.Hash
+			(
+				"position", point,
+				"time", 2,
+				"easetype", "linear"
+			)
+		);
 	}
 
 	void Update()
@@ -73,18 +67,9 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
-	public void gameWon()
+	private void gameWon()
 	{
-		iTween.MoveTo(player,
-			iTween.Hash(
-				"position", finishPoint.transform.position,
-				"time", 2,
-				"easetype", "linear"
-			)
-		);
+		movePlayerToPoint(finishPoint.transform.position);
 		finishUI.SetActive (true);
 	}
-
-
-
 }
