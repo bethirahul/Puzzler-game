@@ -3,13 +3,16 @@ using System.Collections;
 
 public class GameLogic : MonoBehaviour
 {
-	public GameObject player;
-	public GameObject startUI, finishUI;
-	public GameObject startPoint, playPoint, finishPoint;
-	public GameObject[] puzzleSphere;
+	public GameObject go_player;
+	public GameObject go_startUI, go_finishUI;
+	public GameObject go_startPoint, go_playPoint, go_finishPoint;
+	public GameObject[] go_arr_puzzleSphere;
 	private int numOfSpheres = 5;
-	private int[] sequenceOrder;
-	public float puzzleAnimSpeed = 1.0f;
+	private int[] arr_sequenceOrder;
+	public float seqAnimSpeed = 1.0f;
+
+	private int currentIndex;
+	private bool isBallGlowing = false;
 
 	void Start()
 	{
@@ -17,39 +20,78 @@ public class GameLogic : MonoBehaviour
 		// Required because GVR resets camera position to 0, 0, 0.
 		// player = player.transform.parent.gameObject;
 
-		sequenceOrder = new int[numOfSpheres];
+		arr_sequenceOrder = new int[numOfSpheres];
 
 		// Move player to the start position.
-		player.transform.position = startPoint.transform.position;
+		go_player.transform.position = go_startPoint.transform.position;
 	}
 
-	public void startGame()
+	public void fn_startGame()
 	{
-		startUI.SetActive(false);
-		initGame ();
+		go_startUI.SetActive(false);
+		fn_initGame ();
 	}
 
-	public void restartGame()
+	public void fn_restartGame()
 	{
-		finishUI.SetActive(false);
-		initGame ();
+		go_finishUI.SetActive(false);
+		fn_initGame ();
 	}
 
-	private void initGame()
+	private void fn_initGame()
 	{
-		movePlayerToPoint(playPoint.transform.position);
+		fn_movePlayerToPoint(go_playPoint.transform.position);
 		for (int i = 0; i < numOfSpheres; i++)
 		{
-			sequenceOrder[i] = Random.Range(0, numOfSpheres);
+			arr_sequenceOrder[i] = Random.Range(0, numOfSpheres);
 		}
-		Debug.Log ("The puzzle sequence is " + sequenceOrder[0] + ", " + sequenceOrder[1] + ", " + sequenceOrder[2] + ", " + sequenceOrder[3] + ", " + sequenceOrder[4]);
+		Debug.Log ("The puzzle sequence is " + arr_sequenceOrder[0] + ", " + arr_sequenceOrder[1] + ", " + arr_sequenceOrder[2] + ", " + arr_sequenceOrder[3] + ", " + arr_sequenceOrder[4]);
+		currentIndex = 0;
+
+		isBallGlowing = false;
+		fn_dimmAllSpheres();
+		currentIndex = 0;
+		InvokeRepeating ("fn_showSequence", 3.0f, seqAnimSpeed);
 	}
 
-	private void movePlayerToPoint(Vector3 point)
+	public void fn_showSequence()
+	{
+		if(isBallGlowing == false)
+		{
+			fn_glowBall(arr_sequenceOrder[currentIndex]);
+		}
+		else
+		{
+			fn_dimmAllSpheres();
+			currentIndex++;
+			if(currentIndex >= numOfSpheres)
+			{
+				CancelInvoke("fn_showSequence");
+			}
+		}
+
+		isBallGlowing = !isBallGlowing;
+
+	}
+
+	private void fn_glowBall(int ballIndex)
+	{
+		//go_arr_puzzleSphere[ballindex].fn_glow(true);
+	}
+
+	private void fn_dimmAllSpheres()
+	{
+		for (int i = 0; i < numOfSpheres; i++)
+		{
+			//go_arr_puzzleSphere[i].fn_glow(false);
+		}
+	}
+
+	private void fn_movePlayerToPoint(Vector3 point)
 	{
 		iTween.MoveTo
 		(
-			player,
+			go_player,
 			iTween.Hash
 			(
 				"position", point,
@@ -61,15 +103,15 @@ public class GameLogic : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(0) && player.transform.position == playPoint.transform.position)
+		if (Input.GetMouseButtonDown(0) && go_player.transform.position == go_playPoint.transform.position)
 		{
-			gameWon();
+			fn_gameWon();
 		}
 	}
 
-	private void gameWon()
+	private void fn_gameWon()
 	{
-		movePlayerToPoint(finishPoint.transform.position);
-		finishUI.SetActive (true);
+		fn_movePlayerToPoint(go_finishPoint.transform.position);
+		go_finishUI.SetActive (true);
 	}
 }
