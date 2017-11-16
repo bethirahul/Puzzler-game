@@ -12,11 +12,11 @@ public class puzzleSphere : MonoBehaviour
 		{
 			if(isGlowing)
 			{
-				//dimm
+				/// dimm
 			}
 			else
 			{
-				//glow
+				/// glow
 			}
 		}
 	}
