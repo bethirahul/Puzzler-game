@@ -43,7 +43,10 @@ public class GameLogic : MonoBehaviour
 	//   I N I T   //
 	private void fn_initGame()
 	{
+		/// Moving Player to the Play Area.
 		fn_movePlayerToPoint(go_playPoint.transform.position);
+
+		/// Generating Random Sequence
 		for (int i = 0; i < numOfSpheres; i++)
 		{
 			arr_sequenceOrder[i] = Random.Range(0, numOfSpheres);
@@ -51,6 +54,11 @@ public class GameLogic : MonoBehaviour
 		Debug.Log ("The puzzle sequence is " + arr_sequenceOrder[0] + ", " + arr_sequenceOrder[1] + ", "
 											 + arr_sequenceOrder[2] + ", " + arr_sequenceOrder[3] + ", "
                                              + arr_sequenceOrder[4]);
+
+        /// Flash lights 3 times - for player attention
+
+
+        /// Animate Sequence
 		currentIndex = 0;
 
 		isBallGlowing = false;
