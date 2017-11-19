@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public class GameLogic : MonoBehaviour
 {
@@ -7,12 +8,13 @@ public class GameLogic : MonoBehaviour
 	public  GameObject   go_startUI, go_finishUI;
 	public  GameObject   go_startPoint, go_playPoint, go_finishPoint;
 	public  GameObject[] go_arr_puzzleSphere;
+	public  GameObject[] go_arr_lights;
 	private int   numOfSpheres = 5;
 	private int[] arr_sequenceOrder;
 	public  float seqAnimSpeed = 1.0f;
 
 	private int  currentIndex;
-	private bool isBallGlowing = false;
+	/// private bool isBallGlowing = false;
 
 	//   S T A R T   //                                                                                                
 	void Start()
@@ -22,6 +24,7 @@ public class GameLogic : MonoBehaviour
 		/// player = player.transform.parent.gameObject;
 
 		arr_sequenceOrder = new int[numOfSpheres];
+		go_arr_lights = new GameObject[numOfSpheres];
 
 		/// Move player to the start position. 
 		go_player.transform.position = go_startPoint.transform.position;
@@ -31,19 +34,20 @@ public class GameLogic : MonoBehaviour
 	public void fn_startGame()
 	{
 		go_startUI.SetActive(false);
-		fn_initGame ();
+		fn_initGame();
 	}
 
 	public void fn_restartGame()
 	{
 		go_finishUI.SetActive(false);
-		fn_initGame ();
+		fn_initGame();
 	}
 	
 	//   I N I T   //
 	private void fn_initGame()
 	{
-		/// Moving Player to the Play Area.
+		Debug.Log("Initiating Game");
+		/// Move Player to the Play Area.
 		fn_movePlayerToPoint(go_playPoint.transform.position);
 
 		/// Generating Random Sequence
@@ -55,19 +59,34 @@ public class GameLogic : MonoBehaviour
 											 + arr_sequenceOrder[2] + ", " + arr_sequenceOrder[3] + ", "
                                              + arr_sequenceOrder[4]);
 
-        /// Flash lights 3 times - for player attention
-
+        /// Flash lights - for player attention
+        fn_setLightsActive(true);
+		InvokeRepeating("fn_flashLights", 2.0f, 0.5f);
 
         /// Animate Sequence
-		currentIndex = 0;
+		/*currentIndex = 0;
 
 		isBallGlowing = false;
 		fn_dimmAllSpheres();
 		currentIndex = 0;
-		InvokeRepeating ("fn_showSequence", 3.0f, seqAnimSpeed);
+		InvokeRepeating("fn_showSequence", 3.0f, seqAnimSpeed);*/
 	}
 
-	public void fn_showSequence()
+	private void fn_setLightsActive(bool status)
+	{
+		for(int i = 0; i < numOfSpheres; i++)
+		{
+			go_arr_lights[i].SetActive(status);
+		}
+	}
+
+	/// Flashing lights Function
+	private void fn_flashLights()
+	{
+		fn_setLightsActive(!go_arr_lights[0].activeSelf);
+	}
+
+	/*public void fn_showSequence()
 	{
 		if(isBallGlowing == false)
 		{
@@ -85,20 +104,20 @@ public class GameLogic : MonoBehaviour
 
 		isBallGlowing = !isBallGlowing;
 
-	}
+	}*/
 
-	private void fn_glowBall(int ballIndex)
+	/*private void fn_glowBall(int ballIndex)
 	{
 		/// go_arr_puzzleSphere[ballindex].fn_glow(true);
-	}
+	}*/
 
-	private void fn_dimmAllSpheres()
+	/*private void fn_dimmAllSpheres()
 	{
 		for (int i = 0; i < numOfSpheres; i++)
 		{
 			/// go_arr_puzzleSphere[i].fn_glow(false);
 		}
-	}
+	}*/
 	
 	//   P L A Y E R   M O V E M E N T   //
 	private void fn_movePlayerToPoint(Vector3 point)
