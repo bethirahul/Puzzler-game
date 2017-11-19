@@ -7,11 +7,11 @@ public class GameLogic : MonoBehaviour
 	public  GameObject   go_player;
 	public  GameObject   go_startUI, go_finishUI;
 	public  GameObject   go_startPoint, go_playPoint, go_finishPoint;
+	public  GameObject[] go_arr_light;
 	public  GameObject[] go_arr_puzzleSphere;
-	public  GameObject[] go_arr_lights;
-	private int   numOfSpheres = 5;
 	private int[] arr_sequenceOrder;
 	public  float seqAnimSpeed = 1.0f;
+	private int flashLightsCounter;
 
 	private int  currentIndex;
 	/// private bool isBallGlowing = false;
@@ -23,8 +23,7 @@ public class GameLogic : MonoBehaviour
 		/// Required because GVR resets camera position to 0, 0, 0.
 		/// player = player.transform.parent.gameObject;
 
-		arr_sequenceOrder = new int[numOfSpheres];
-		go_arr_lights = new GameObject[numOfSpheres];
+		arr_sequenceOrder = new int[go_arr_puzzleSphere.Length];
 
 		/// Move player to the start position. 
 		go_player.transform.position = go_startPoint.transform.position;
@@ -51,9 +50,9 @@ public class GameLogic : MonoBehaviour
 		fn_movePlayerToPoint(go_playPoint.transform.position);
 
 		/// Generating Random Sequence
-		for (int i = 0; i < numOfSpheres; i++)
+		for (int i = 0; i < arr_sequenceOrder.Length; i++)
 		{
-			arr_sequenceOrder[i] = Random.Range(0, numOfSpheres);
+			arr_sequenceOrder[i] = Random.Range(0, arr_sequenceOrder.Length);
 		}
 		Debug.Log ("The puzzle sequence is " + arr_sequenceOrder[0] + ", " + arr_sequenceOrder[1] + ", "
 											 + arr_sequenceOrder[2] + ", " + arr_sequenceOrder[3] + ", "
@@ -61,7 +60,9 @@ public class GameLogic : MonoBehaviour
 
         /// Flash lights - for player attention
         fn_setLightsActive(true);
-		InvokeRepeating("fn_flashLights", 2.0f, 0.5f);
+        CancelInvoke("fn_flashLights");
+        flashLightsCounter = 0;
+		InvokeRepeating("fn_flashLights", 1.75f, 0.33f);
 
         /// Animate Sequence
 		/*currentIndex = 0;
@@ -74,16 +75,21 @@ public class GameLogic : MonoBehaviour
 
 	private void fn_setLightsActive(bool status)
 	{
-		for(int i = 0; i < numOfSpheres; i++)
+		for(int i = 0; i < go_arr_light.Length; i++)
 		{
-			go_arr_lights[i].SetActive(status);
+			go_arr_light[i].SetActive(status);
 		}
 	}
 
 	/// Flashing lights Function
 	private void fn_flashLights()
 	{
-		fn_setLightsActive(!go_arr_lights[0].activeSelf);
+		fn_setLightsActive(!go_arr_light[0].activeSelf);
+		flashLightsCounter++;
+		if(flashLightsCounter >= 6)
+		{
+			CancelInvoke("fn_flashLights");
+		}
 	}
 
 	/*public void fn_showSequence()
