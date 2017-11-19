@@ -20,5 +20,8 @@ public class puzzleSphere : MonoBehaviour
 		rend.material.SetColor("_Color", origColor);
 	}
 
-
+	public void fn_glow()
+	{
+		rend.material.SetColor("_Color", glowColor);
+	}
 }

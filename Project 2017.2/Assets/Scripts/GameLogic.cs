@@ -10,7 +10,7 @@ public class GameLogic : MonoBehaviour
 	public  GameObject[] go_arr_light;
 	public  GameObject[] go_arr_puzzleSphere;
 	private int[] arr_sequenceOrder;
-	public  float seqAnimSpeed = 1.0f;
+	public  float seqAnimSpeed;
 	private int flashLightsCounter;
 
 	private int  currentIndex;
@@ -62,13 +62,12 @@ public class GameLogic : MonoBehaviour
         fn_setLightsActive(true);
         CancelInvoke("fn_flashLights");
         flashLightsCounter = 0;
-		InvokeRepeating("fn_flashLights", 1.75f, 0.33f);
+		InvokeRepeating("fn_flashLights", 2.0f, 0.29f);
 
         /// Animate Sequence
-		fn_glowBalls(false);
 		CancelInvoke("fn_animSequence");
 		currentIndex = 0;
-		InvokeRepeating("fn_animSequence", 4.0f, seqAnimSpeed);
+		InvokeRepeating("fn_animSequence", 4.5f, seqAnimSpeed);
 	}
 
 	//   L I G H T S   //
@@ -76,7 +75,7 @@ public class GameLogic : MonoBehaviour
 	{
 		for(int i = 0; i < go_arr_light.Length; i++)
 		{
-			go_arr_light[i].SetActive(true);
+			go_arr_light[i].SetActive(bool_status);
 		}
 	}
 
@@ -101,7 +100,14 @@ public class GameLogic : MonoBehaviour
 
 	private void fn_animSequence()
 	{
-		
+		fn_glowBalls(false);
+
+		if(currentIndex%2 == 0)
+			go_arr_puzzleSphere[arr_sequenceOrder[currentIndex/2]].GetComponent<puzzleSphere>().fn_glow();
+
+		currentIndex++;
+		if(currentIndex >= (go_arr_puzzleSphere.Length*2))
+			CancelInvoke("fn_animSequence");
 	}
 
 	/*public void fn_showSequence()

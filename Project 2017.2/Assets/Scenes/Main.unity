@@ -540,7 +540,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_LocalScale.x
@@ -556,7 +556,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 117794, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_Name
-      value: Dungeon Orb (2)
+      value: Dungeon Orb (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
@@ -900,12 +900,12 @@ MonoBehaviour:
   - {fileID: 1219442849}
   - {fileID: 1878528329}
   go_arr_puzzleSphere:
-  - {fileID: 1379301276}
+  - {fileID: 1333531878}
   - {fileID: 2109900774}
+  - {fileID: 1379301276}
   - {fileID: 254848292}
   - {fileID: 1203654849}
-  - {fileID: 1333531878}
-  seqAnimSpeed: 1
+  seqAnimSpeed: 0.75
 --- !u!4 &117239867
 Transform:
   m_ObjectHideFlags: 0
@@ -1806,8 +1806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origColor: {r: 0, g: 0, b: 0, a: 0}
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
+  glowColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &271500851
 GameObject:
   m_ObjectHideFlags: 0
@@ -2889,7 +2889,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_LocalScale.x
@@ -2902,6 +2902,10 @@ Prefab:
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 117794, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
+      propertyPath: m_Name
+      value: Dungeon Orb (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
@@ -3167,7 +3171,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_LocalScale.x
@@ -3183,7 +3187,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 117794, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_Name
-      value: Dungeon Orb (3)
+      value: Dungeon Orb (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
@@ -6436,8 +6440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origColor: {r: 0, g: 0, b: 0, a: 0}
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
+  glowColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &1209792824
 GameObject:
   m_ObjectHideFlags: 0
@@ -7421,8 +7425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origColor: {r: 0, g: 0, b: 0, a: 0}
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
+  glowColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &1357512476
 GameObject:
   m_ObjectHideFlags: 0
@@ -7511,8 +7515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origColor: {r: 1, g: 0, b: 0, a: 0}
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
+  glowColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &1384378854
 GameObject:
   m_ObjectHideFlags: 0
@@ -8396,7 +8400,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 436798, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_LocalScale.x
@@ -8412,7 +8416,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 117794, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
       propertyPath: m_Name
-      value: Dungeon Orb (4)
+      value: Dungeon Orb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f1d3383012ab4f1cb31dcc37907601a, type: 2}
@@ -8661,15 +8665,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1551962334}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: -2.9}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
-  - {fileID: 527390798}
+  - {fileID: 1491123792}
   - {fileID: 1109427329}
+  - {fileID: 527390798}
   - {fileID: 45737320}
   - {fileID: 567766215}
-  - {fileID: 1491123792}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11399,5 +11403,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  origColor: {r: 0, g: 0, b: 0, a: 0}
-  glowColor: {r: 0, g: 0, b: 0, a: 0}
+  origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
+  glowColor: {r: 1, g: 0, b: 0, a: 0}
