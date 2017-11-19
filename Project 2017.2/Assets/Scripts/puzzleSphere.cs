@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class puzzleSphere : MonoBehaviour
 {
-	private bool isGlowing = false;
+	private Renderer rend;
+	public  Color origColor;
+	public  Color glowColor;
+	private bool bool_isGlowing;
 
-	public void fn_glow(bool isCondition)
+	void Start()
 	{
-		if(isCondition != isGlowing)
-		{
-			if(isGlowing)
-			{
-				/// dimm
-			}
-			else
-			{
-				/// glow
-			}
-		}
+		rend = GetComponent<Renderer>();
+		bool_isGlowing = false;
 	}
+
+	public void fn_resetColor()
+	{
+		rend.material.SetColor("_Color", origColor);
+	}
+
+
 }

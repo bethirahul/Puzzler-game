@@ -893,18 +893,18 @@ MonoBehaviour:
   go_startPoint: {fileID: 1041001852}
   go_playPoint: {fileID: 968395618}
   go_finishPoint: {fileID: 874369142}
-  go_arr_puzzleSphere:
-  - {fileID: 1379301276}
-  - {fileID: 2109900774}
-  - {fileID: 254848292}
-  - {fileID: 1203654849}
-  - {fileID: 1333531878}
   go_arr_light:
   - {fileID: 801228371}
   - {fileID: 1895744}
   - {fileID: 135853543}
   - {fileID: 1219442849}
   - {fileID: 1878528329}
+  go_arr_puzzleSphere:
+  - {fileID: 1379301276}
+  - {fileID: 2109900774}
+  - {fileID: 254848292}
+  - {fileID: 1203654849}
+  - {fileID: 1333531878}
   seqAnimSpeed: 1
 --- !u!4 &117239867
 Transform:
@@ -1806,6 +1806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origColor: {r: 0, g: 0, b: 0, a: 0}
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &271500851
 GameObject:
   m_ObjectHideFlags: 0
@@ -6434,6 +6436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origColor: {r: 0, g: 0, b: 0, a: 0}
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1209792824
 GameObject:
   m_ObjectHideFlags: 0
@@ -7417,6 +7421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origColor: {r: 0, g: 0, b: 0, a: 0}
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1357512476
 GameObject:
   m_ObjectHideFlags: 0
@@ -7505,6 +7511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origColor: {r: 1, g: 0, b: 0, a: 0}
+  glowColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1384378854
 GameObject:
   m_ObjectHideFlags: 0
@@ -11391,3 +11399,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdb39fec7e93b42a02c2740cbd8408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origColor: {r: 0, g: 0, b: 0, a: 0}
+  glowColor: {r: 0, g: 0, b: 0, a: 0}

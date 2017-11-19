@@ -65,23 +65,21 @@ public class GameLogic : MonoBehaviour
 		InvokeRepeating("fn_flashLights", 1.75f, 0.33f);
 
         /// Animate Sequence
-		/*currentIndex = 0;
-
-		isBallGlowing = false;
-		fn_dimmAllSpheres();
+		fn_glowBalls(false);
+		CancelInvoke("fn_animSequence");
 		currentIndex = 0;
-		InvokeRepeating("fn_showSequence", 3.0f, seqAnimSpeed);*/
+		InvokeRepeating("fn_animSequence", 4.0f, seqAnimSpeed);
 	}
 
-	private void fn_setLightsActive(bool status)
+	//   L I G H T S   //
+	private void fn_setLightsActive(bool bool_status)
 	{
 		for(int i = 0; i < go_arr_light.Length; i++)
 		{
-			go_arr_light[i].SetActive(status);
+			go_arr_light[i].SetActive(true);
 		}
 	}
 
-	/// Flashing lights Function
 	private void fn_flashLights()
 	{
 		fn_setLightsActive(!go_arr_light[0].activeSelf);
@@ -90,6 +88,20 @@ public class GameLogic : MonoBehaviour
 		{
 			CancelInvoke("fn_flashLights");
 		}
+	}
+
+	//   B A L L S   //
+	private void fn_glowBalls(bool bool_status)
+	{
+		for(int i = 0; i < go_arr_puzzleSphere.Length; i++)
+		{
+			go_arr_puzzleSphere[i].GetComponent<puzzleSphere>().fn_resetColor();
+		}
+	}
+
+	private void fn_animSequence()
+	{
+		
 	}
 
 	/*public void fn_showSequence()
