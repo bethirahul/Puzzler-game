@@ -26,6 +26,12 @@ public class puzzleSphere : MonoBehaviour
 		rend.material.SetColor("_Color", origColor);
 	}
 
+	public void fn_glowOnce()
+	{
+		rend.material.SetColor("_Color", glowColor);
+		Invoke("fn_dimm",0.33f); 
+	}
+
 	public void fn_buttonPressed()
 	{
 		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true)

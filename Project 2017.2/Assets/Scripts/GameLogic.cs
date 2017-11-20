@@ -16,7 +16,6 @@ public class GameLogic : MonoBehaviour
 
 	private int  currentIndex;
 	public  bool bool_takeInput = false;
-	/// private bool isBallGlowing = false;
 
 	//   S T A R T   //                                                                                                
 	void Start()
@@ -30,10 +29,6 @@ public class GameLogic : MonoBehaviour
 
 		/// Move player to the start position. 
 		go_player.transform.position = go_startPoint.transform.position;
-		/*for(int i = 0; i < go_arr_puzzleSphere.Length; i++)
-		{
-			go_arr_puzzleSphere[i].GetComponent<puzzleSphere>().id = i;
-		}*/
 	}
 	
 	//   B U T T O N S   //
@@ -107,6 +102,14 @@ public class GameLogic : MonoBehaviour
 		}
 	}
 
+	private void fn_glowBallsOnce()
+	{
+		for(int i = 0; i < go_arr_puzzleSphere.Length; i++)
+		{
+			go_arr_puzzleSphere[i].GetComponent<puzzleSphere>().fn_glowOnce();
+		}
+	}
+
 	private void fn_animSequence()
 	{
 		if(currentIndex % 2 == 0)
@@ -118,12 +121,19 @@ public class GameLogic : MonoBehaviour
 		if(currentIndex >= (go_arr_puzzleSphere.Length * 2))
 		{
 			CancelInvoke("fn_animSequence");
-			fn_acceptInput();
+			Invoke("fn_startTakingInput", 0.66f);
 		}
+	}
+
+	private void fn_startTakingInput()
+	{
+		fn_glowBallsOnce();
+		Invoke("fn_acceptInput", 0.33f);
 	}
 
 	private void fn_acceptInput()
 	{
+		fn_glowBallsOnce();
 		currentIndex = 0;
 		bool_takeInput = true;
 		Debug.Log("Accepting Input");
@@ -150,7 +160,7 @@ public class GameLogic : MonoBehaviour
 			if(arr_generatedSequence[i] != arr_inputSequence[i])
 			{
 				Debug.Log("Input wrong");
-				fn_acceptInput();
+				fn_startTakingInput();
 				return;
 			}
 		}
@@ -206,7 +216,7 @@ public class GameLogic : MonoBehaviour
 		);
 	}
 
-	//   U P D A T E   //                                                                                              
+	/*//   U P D A T E   //                                                                                              
 	void Update()
 	{
 		
@@ -215,11 +225,11 @@ public class GameLogic : MonoBehaviour
 			fn_gameWon();
 		}*/
 
-		if(go_player.transform.position == go_playPoint.transform.position && bool_takeInput == true)
+		/*if(go_player.transform.position == go_playPoint.transform.position && bool_takeInput == true)
 		{
 			Invoke("fn_gameWon", 25.0f);
 		}
-	}
+	}*/
 	
 	//   W I N   //
 	private void fn_gameWon()
