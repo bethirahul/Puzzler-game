@@ -9,6 +9,9 @@ public class GameLogic : MonoBehaviour
 	public  GameObject   go_startPoint, go_playPoint, go_finishPoint;
 	public  GameObject[] go_arr_light;
 	public  GameObject[] go_arr_puzzleSphere;
+	public  AudioSource  audioSource;
+	public  AudioClip    failAudioClip;
+	public  AudioClip    winAudioClip;
 	private int[] arr_generatedSequence;
 	private int[] arr_inputSequence;
 	public  float seqAnimSpeed;
@@ -113,7 +116,10 @@ public class GameLogic : MonoBehaviour
 	private void fn_animSequence()
 	{
 		if(currentIndex % 2 == 0)
-			go_arr_puzzleSphere[arr_generatedSequence[currentIndex / 2]].GetComponent<puzzleSphere>().fn_glow();
+		{
+			go_arr_puzzleSphere[arr_generatedSequence[currentIndex / 2]].GetComponent<puzzleSphere>().fn_glow(true);
+			///go_arr_puzzleSphere[arr_generatedSequence[currentIndex / 2]].GetComponent<puzzleSphere>().fn_playAudio();
+		}
 		else
 			go_arr_puzzleSphere[arr_generatedSequence[currentIndex / 2]].GetComponent<puzzleSphere>().fn_dimm();
 
@@ -159,6 +165,8 @@ public class GameLogic : MonoBehaviour
 		{
 			if(arr_generatedSequence[i] != arr_inputSequence[i])
 			{
+				audioSource.clip = failAudioClip;
+				audioSource.Play();
 				Debug.Log("Input wrong");
 				fn_startTakingInput();
 				return;
@@ -234,6 +242,8 @@ public class GameLogic : MonoBehaviour
 	//   W I N   //
 	private void fn_gameWon()
 	{
+		audioSource.clip = winAudioClip;
+		audioSource.Play();
 		Debug.Log("Game Won");
 		fn_movePlayerToPoint(go_finishPoint.transform.position);
 		go_finishUI.SetActive (true);

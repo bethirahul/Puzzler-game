@@ -8,7 +8,7 @@ public class puzzleSphere : MonoBehaviour
 	public  Color origColor;
 	public  Color glowColor;
 	public  int   id;
-	public  AudioSource audio;
+	public  AudioSource audioSource;
 
 	public GameObject go_gameLogic;
 
@@ -17,9 +17,11 @@ public class puzzleSphere : MonoBehaviour
 		rend = GetComponent<Renderer>();
 	}
 
-	public void fn_glow()
+	public void fn_glow(bool bool_status)
 	{
 		rend.material.SetColor("_Color", glowColor);
+		if(bool_status)
+			audioSource.Play();
 	}
 
 	public void fn_dimm()
@@ -29,8 +31,8 @@ public class puzzleSphere : MonoBehaviour
 
 	public void fn_glowOnce()
 	{
-		rend.material.SetColor("_Color", glowColor);
-		Invoke("fn_dimm",0.33f); 
+		fn_glow(false);
+		Invoke("fn_dimm",0.33f);
 	}
 
 	/*public void fn_buttonPressed()
@@ -48,15 +50,20 @@ public class puzzleSphere : MonoBehaviour
 		{
 			Debug.Log(this.gameObject.name + ": clicked");
 			go_gameLogic.GetComponent<GameLogic>().fn_registerPoint(this.id);
-			audio.Play();
+			audioSource.Play();
 		}
+	}
+
+	public void fn_playAudio()
+	{
+		audioSource.Play();
 	}
 
 	public void fn_playerStartedLooking()
 	{
 		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true)
 		{
-			fn_glow();
+			fn_glow(false);
 			Debug.Log(this.gameObject.name + ": Player started looking at me");
 		}
 	}
