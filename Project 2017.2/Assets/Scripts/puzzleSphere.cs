@@ -32,32 +32,39 @@ public class puzzleSphere : MonoBehaviour
 		Invoke("fn_dimm",0.33f); 
 	}
 
-	public void fn_buttonPressed()
+	/*public void fn_buttonPressed()
 	{
 		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true)
 		{
 			fn_glow();
 			Debug.Log(this.gameObject.name + ": pressed");
 		}
-	}
+	}*/
 
-	public void fn_buttonReleased()
+	public void fn_clicked()
 	{
 		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true)
 		{
-			fn_dimm();
-			Debug.Log(this.gameObject.name + ": released");
+			Debug.Log(this.gameObject.name + ": clicked");
 			go_gameLogic.GetComponent<GameLogic>().fn_registerPoint(this.id);
 		}
 	}
 
 	public void fn_playerStartedLooking()
 	{
-		Debug.Log(this.gameObject.name + ": Player started looking at me");
+		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true)
+		{
+			fn_glow();
+			Debug.Log(this.gameObject.name + ": Player started looking at me");
+		}
 	}
 
 	public void fn_playerStoppedLooking()
 	{
-		Debug.Log(this.gameObject.name + ": Player stopped looking at me");
+		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true)
+		{
+			fn_dimm();
+			Debug.Log(this.gameObject.name + ": Player stopped looking at me");
+		}
 	}
 }
