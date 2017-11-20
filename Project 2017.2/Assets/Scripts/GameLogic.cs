@@ -249,4 +249,12 @@ public class GameLogic : MonoBehaviour
 		go_finishUI.SetActive (true);
 		CancelInvoke("fn_gameWon");
 	}
+
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.Escape))
+		{
+        	Application.Quit();
+    	}
+	}
 }
