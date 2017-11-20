@@ -14,6 +14,7 @@ public class GameLogic : MonoBehaviour
 	private int flashLightsCounter;
 
 	private int  currentIndex;
+	public bool bool_takeInput = false;
 	/// private bool isBallGlowing = false;
 
 	//   S T A R T   //                                                                                                
@@ -47,6 +48,7 @@ public class GameLogic : MonoBehaviour
 	{
 		Debug.Log("Initiating Game");
 		/// Move Player to the Play Area.
+		bool_takeInput = false;
 		fn_movePlayerToPoint(go_playPoint.transform.position);
 
 		/// Generating Random Sequence
@@ -67,6 +69,7 @@ public class GameLogic : MonoBehaviour
         /// Animate Sequence
 		CancelInvoke("fn_animSequence");
 		currentIndex = 0;
+		fn_dimmBalls();
 		InvokeRepeating("fn_animSequence", 4.5f, seqAnimSpeed);
 	}
 
@@ -90,24 +93,28 @@ public class GameLogic : MonoBehaviour
 	}
 
 	//   B A L L S   //
-	private void fn_glowBalls(bool bool_status)
+	private void fn_dimmBalls()
 	{
 		for(int i = 0; i < go_arr_puzzleSphere.Length; i++)
 		{
-			go_arr_puzzleSphere[i].GetComponent<puzzleSphere>().fn_resetColor();
+			go_arr_puzzleSphere[i].GetComponent<puzzleSphere>().fn_dimm();
 		}
 	}
 
 	private void fn_animSequence()
 	{
-		fn_glowBalls(false);
-
-		if(currentIndex%2 == 0)
-			go_arr_puzzleSphere[arr_sequenceOrder[currentIndex/2]].GetComponent<puzzleSphere>().fn_glow();
+		if(currentIndex % 2 == 0)
+			go_arr_puzzleSphere[arr_sequenceOrder[currentIndex / 2]].GetComponent<puzzleSphere>().fn_glow();
+		else
+			go_arr_puzzleSphere[arr_sequenceOrder[currentIndex / 2]].GetComponent<puzzleSphere>().fn_dimm();
 
 		currentIndex++;
-		if(currentIndex >= (go_arr_puzzleSphere.Length*2))
+		if(currentIndex >= (go_arr_puzzleSphere.Length * 2))
+		{
 			CancelInvoke("fn_animSequence");
+			bool_takeInput = true;
+			Debug.Log("Accepting Input");
+		}
 	}
 
 	/*public void fn_showSequence()
@@ -161,9 +168,15 @@ public class GameLogic : MonoBehaviour
 	//   U P D A T E   //                                                                                              
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(0) && go_player.transform.position == go_playPoint.transform.position)
+		
+		/*if(Input.GetMouseButtonDown(0) && go_player.transform.position == go_playPoint.transform.position)
 		{
 			fn_gameWon();
+		}*/
+
+		if(go_player.transform.position == go_playPoint.transform.position && bool_takeInput == true)
+		{
+			Invoke("fn_gameWon", 10.0f);
 		}
 	}
 	
@@ -172,5 +185,6 @@ public class GameLogic : MonoBehaviour
 	{
 		fn_movePlayerToPoint(go_finishPoint.transform.position);
 		go_finishUI.SetActive (true);
+		CancelInvoke("fn_gameWon");
 	}
 }
