@@ -8,6 +8,7 @@ public class puzzleSphere : MonoBehaviour
 	public  Color origColor;
 	public  Color glowColor;
 	public  int   id;
+	public  AudioSource audio;
 
 	public GameObject go_gameLogic;
 
@@ -47,6 +48,7 @@ public class puzzleSphere : MonoBehaviour
 		{
 			Debug.Log(this.gameObject.name + ": clicked");
 			go_gameLogic.GetComponent<GameLogic>().fn_registerPoint(this.id);
+			audio.Play();
 		}
 	}
 
