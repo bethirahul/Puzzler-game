@@ -1809,8 +1809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
   glowColor: {r: 1, g: 0, b: 0, a: 0}
-  turnOffTime: 0.33
-  bool_playerLooking: 0
+  id: 3
   go_gameLogic: {fileID: 117239865}
 --- !u!114 &254848297
 MonoBehaviour:
@@ -1828,7 +1827,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 254848293}
           m_MethodName: fn_buttonPressed
           m_Mode: 1
           m_Arguments:
@@ -1845,7 +1844,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 254848293}
           m_MethodName: fn_buttonReleased
           m_Mode: 1
           m_Arguments:
@@ -1862,7 +1861,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 254848293}
           m_MethodName: fn_playerStartedLooking
           m_Mode: 1
           m_Arguments:
@@ -1879,7 +1878,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 254848293}
           m_MethodName: fn_playerStoppedLooking
           m_Mode: 1
           m_Arguments:
@@ -6527,8 +6526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
   glowColor: {r: 1, g: 0, b: 0, a: 0}
-  turnOffTime: 0.33
-  bool_playerLooking: 0
+  id: 4
   go_gameLogic: {fileID: 117239865}
 --- !u!114 &1203654854
 MonoBehaviour:
@@ -6546,7 +6544,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 1203654850}
           m_MethodName: fn_buttonPressed
           m_Mode: 1
           m_Arguments:
@@ -6563,7 +6561,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 1203654850}
           m_MethodName: fn_buttonReleased
           m_Mode: 1
           m_Arguments:
@@ -6580,7 +6578,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 1203654850}
           m_MethodName: fn_playerStartedLooking
           m_Mode: 1
           m_Arguments:
@@ -6597,7 +6595,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 1203654850}
           m_MethodName: fn_playerStoppedLooking
           m_Mode: 1
           m_Arguments:
@@ -7596,8 +7594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
   glowColor: {r: 1, g: 0, b: 0, a: 0}
-  turnOffTime: 0.33
-  bool_playerLooking: 0
+  id: 0
   go_gameLogic: {fileID: 117239865}
 --- !u!114 &1333531883
 MonoBehaviour:
@@ -7770,8 +7767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
   glowColor: {r: 1, g: 0, b: 0, a: 0}
-  turnOffTime: 0.33
-  bool_playerLooking: 0
+  id: 2
   go_gameLogic: {fileID: 117239865}
 --- !u!114 &1379301281
 MonoBehaviour:
@@ -7789,7 +7785,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 1379301277}
           m_MethodName: fn_buttonPressed
           m_Mode: 1
           m_Arguments:
@@ -7806,7 +7802,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 1379301277}
           m_MethodName: fn_buttonReleased
           m_Mode: 1
           m_Arguments:
@@ -7823,7 +7819,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 1379301277}
           m_MethodName: fn_playerStartedLooking
           m_Mode: 1
           m_Arguments:
@@ -7840,7 +7836,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 1379301277}
           m_MethodName: fn_playerStoppedLooking
           m_Mode: 1
           m_Arguments:
@@ -11579,8 +11575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origColor: {r: 0.24705882, g: 1, b: 0, a: 0}
   glowColor: {r: 1, g: 0, b: 0, a: 0}
-  turnOffTime: 0.33
-  bool_playerLooking: 0
+  id: 1
   go_gameLogic: {fileID: 117239865}
 --- !u!114 &2109900776
 MonoBehaviour:
@@ -11598,7 +11593,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 2109900775}
           m_MethodName: fn_buttonPressed
           m_Mode: 1
           m_Arguments:
@@ -11615,7 +11610,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 2109900775}
           m_MethodName: fn_buttonReleased
           m_Mode: 1
           m_Arguments:
@@ -11632,7 +11627,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 2109900775}
           m_MethodName: fn_playerStartedLooking
           m_Mode: 1
           m_Arguments:
@@ -11649,7 +11644,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1333531879}
+        - m_Target: {fileID: 2109900775}
           m_MethodName: fn_playerStoppedLooking
           m_Mode: 1
           m_Arguments:

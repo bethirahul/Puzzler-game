@@ -9,12 +9,13 @@ public class GameLogic : MonoBehaviour
 	public  GameObject   go_startPoint, go_playPoint, go_finishPoint;
 	public  GameObject[] go_arr_light;
 	public  GameObject[] go_arr_puzzleSphere;
-	private int[] arr_sequenceOrder;
+	private int[] arr_generatedSequence;
+	private int[] arr_inputSequence;
 	public  float seqAnimSpeed;
-	private int flashLightsCounter;
+	private int   flashLightsCounter;
 
 	private int  currentIndex;
-	public bool bool_takeInput = false;
+	public  bool bool_takeInput = false;
 	/// private bool isBallGlowing = false;
 
 	//   S T A R T   //                                                                                                
@@ -24,10 +25,15 @@ public class GameLogic : MonoBehaviour
 		/// Required because GVR resets camera position to 0, 0, 0.
 		/// player = player.transform.parent.gameObject;
 
-		arr_sequenceOrder = new int[go_arr_puzzleSphere.Length];
+		arr_generatedSequence = new int[go_arr_puzzleSphere.Length];
+		arr_inputSequence     = new int[go_arr_puzzleSphere.Length];
 
 		/// Move player to the start position. 
 		go_player.transform.position = go_startPoint.transform.position;
+		/*for(int i = 0; i < go_arr_puzzleSphere.Length; i++)
+		{
+			go_arr_puzzleSphere[i].GetComponent<puzzleSphere>().id = i;
+		}*/
 	}
 	
 	//   B U T T O N S   //
@@ -52,13 +58,13 @@ public class GameLogic : MonoBehaviour
 		fn_movePlayerToPoint(go_playPoint.transform.position);
 
 		/// Generating Random Sequence
-		for (int i = 0; i < arr_sequenceOrder.Length; i++)
+		for (int i = 0; i < arr_generatedSequence.Length; i++)
 		{
-			arr_sequenceOrder[i] = Random.Range(0, arr_sequenceOrder.Length);
+			arr_generatedSequence[i] = Random.Range(0, arr_generatedSequence.Length);
 		}
-		Debug.Log ("The puzzle sequence is " + arr_sequenceOrder[0] + ", " + arr_sequenceOrder[1] + ", "
-											 + arr_sequenceOrder[2] + ", " + arr_sequenceOrder[3] + ", "
-                                             + arr_sequenceOrder[4]);
+		Debug.Log ("The puzzle sequence is " + arr_generatedSequence[0] + ", " + arr_generatedSequence[1] + ", "
+											 + arr_generatedSequence[2] + ", " + arr_generatedSequence[3] + ", "
+                                             + arr_generatedSequence[4]);
 
         /// Flash lights - for player attention
         fn_setLightsActive(true);
@@ -104,24 +110,59 @@ public class GameLogic : MonoBehaviour
 	private void fn_animSequence()
 	{
 		if(currentIndex % 2 == 0)
-			go_arr_puzzleSphere[arr_sequenceOrder[currentIndex / 2]].GetComponent<puzzleSphere>().fn_glow();
+			go_arr_puzzleSphere[arr_generatedSequence[currentIndex / 2]].GetComponent<puzzleSphere>().fn_glow();
 		else
-			go_arr_puzzleSphere[arr_sequenceOrder[currentIndex / 2]].GetComponent<puzzleSphere>().fn_dimm();
+			go_arr_puzzleSphere[arr_generatedSequence[currentIndex / 2]].GetComponent<puzzleSphere>().fn_dimm();
 
 		currentIndex++;
 		if(currentIndex >= (go_arr_puzzleSphere.Length * 2))
 		{
 			CancelInvoke("fn_animSequence");
-			bool_takeInput = true;
-			Debug.Log("Accepting Input");
+			fn_acceptInput();
 		}
+	}
+
+	private void fn_acceptInput()
+	{
+		currentIndex = 0;
+		bool_takeInput = true;
+		Debug.Log("Accepting Input");
+	}
+
+	public void fn_registerPoint(int p_id)
+	{
+		arr_inputSequence[currentIndex] = p_id;
+		currentIndex++;
+
+		if(currentIndex >= go_arr_puzzleSphere.Length)
+		{
+			/// Input sequence complete
+			bool_takeInput = false;
+			Debug.Log("Input complete: Stopped taking Input");
+			fn_checkInput();
+		}
+	}
+
+	private void fn_checkInput()
+	{
+		for(int i = 0; i < go_arr_puzzleSphere.Length; i++)
+		{
+			if(arr_generatedSequence[i] != arr_inputSequence[i])
+			{
+				Debug.Log("Input wrong");
+				fn_acceptInput();
+				return;
+			}
+		}
+		Debug.Log("Input Correct");
+		fn_gameWon();
 	}
 
 	/*public void fn_showSequence()
 	{
 		if(isBallGlowing == false)
 		{
-			fn_glowBall(arr_sequenceOrder[currentIndex]);
+			fn_glowBall(arr_generatedSequence[currentIndex]);
 		}
 		else
 		{
@@ -176,13 +217,14 @@ public class GameLogic : MonoBehaviour
 
 		if(go_player.transform.position == go_playPoint.transform.position && bool_takeInput == true)
 		{
-			Invoke("fn_gameWon", 10.0f);
+			Invoke("fn_gameWon", 25.0f);
 		}
 	}
 	
 	//   W I N   //
 	private void fn_gameWon()
 	{
+		Debug.Log("Game Won");
 		fn_movePlayerToPoint(go_finishPoint.transform.position);
 		go_finishUI.SetActive (true);
 		CancelInvoke("fn_gameWon");

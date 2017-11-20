@@ -7,15 +7,13 @@ public class puzzleSphere : MonoBehaviour
 	private Renderer rend;
 	public  Color origColor;
 	public  Color glowColor;
-	private bool  bool_isGlowing;
-	private bool  bool_playerLooking = false;
+	public  int   id;
 
 	public GameObject go_gameLogic;
 
 	void Start()
 	{
 		rend = GetComponent<Renderer>();
-		bool_isGlowing = false;
 	}
 
 	public void fn_glow()
@@ -30,25 +28,30 @@ public class puzzleSphere : MonoBehaviour
 
 	public void fn_buttonPressed()
 	{
-		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true && bool_playerLooking == true)
+		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true)
+		{
 			fn_glow();
+			Debug.Log(this.gameObject.name + ": pressed");
+		}
 	}
 
 	public void fn_buttonReleased()
 	{
-		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true && bool_playerLooking == true)
+		if(go_gameLogic.GetComponent<GameLogic>().bool_takeInput == true)
+		{
 			fn_dimm();
+			Debug.Log(this.gameObject.name + ": released");
+			go_gameLogic.GetComponent<GameLogic>().fn_registerPoint(this.id);
+		}
 	}
 
 	public void fn_playerStartedLooking()
 	{
-		bool_playerLooking = true;
 		Debug.Log(this.gameObject.name + ": Player started looking at me");
 	}
 
 	public void fn_playerStoppedLooking()
 	{
-		bool_playerLooking = false;
 		Debug.Log(this.gameObject.name + ": Player stopped looking at me");
 	}
 }
