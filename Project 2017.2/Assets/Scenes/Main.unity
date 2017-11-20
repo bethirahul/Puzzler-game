@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 7e1e5781d39549148abcbf66c428df00, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.22258085, g: 0.2503707, b: 0.32269225, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
-    m_EnvironmentLightingMode: 0
+    m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
@@ -150,8 +150,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 0, g: 1, b: 0.5034485, a: 1}
-  m_Intensity: 1.75
+  m_Color: {r: 0, g: 1, b: 0.91724133, a: 1}
+  m_Intensity: 2.5
   m_Range: 10
   m_SpotAngle: 50
   m_CookieSize: 10
@@ -894,11 +894,8 @@ MonoBehaviour:
   go_playPoint: {fileID: 968395618}
   go_finishPoint: {fileID: 874369142}
   go_arr_light:
-  - {fileID: 801228371}
   - {fileID: 1895744}
   - {fileID: 135853543}
-  - {fileID: 1219442849}
-  - {fileID: 1878528329}
   go_arr_puzzleSphere:
   - {fileID: 1333531878}
   - {fileID: 2109900774}
@@ -1034,8 +1031,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 0
-  m_Color: {r: 0, g: 1, b: 0.5034485, a: 1}
-  m_Intensity: 1.75
+  m_Color: {r: 0, g: 1, b: 0.91764706, a: 1}
+  m_Intensity: 2.5
   m_Range: 10
   m_SpotAngle: 50
   m_CookieSize: 10
@@ -4232,7 +4229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &801228372
 Transform:
   m_ObjectHideFlags: 0
@@ -6888,7 +6885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1219442850
 Transform:
   m_ObjectHideFlags: 0
@@ -10953,7 +10950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1878528330
 Transform:
   m_ObjectHideFlags: 0
