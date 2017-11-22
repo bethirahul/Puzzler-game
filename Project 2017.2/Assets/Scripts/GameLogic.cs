@@ -54,7 +54,7 @@ public class GameLogic : MonoBehaviour
 	}
 	
 	//   I N I T   //
-	private void fn_initGame()
+	public void fn_initGame()
 	{
 		/*Debug.Log("Initiating Game");*/
 
@@ -80,7 +80,7 @@ public class GameLogic : MonoBehaviour
         CancelInvoke("fn_flashLights");
         flashLightsCounter = 0;
         /// Call to turn lights on or off atlernatively - repeatedly
-		InvokeRepeating("fn_flashLights", 2.0f, 0.29f);
+		InvokeRepeating("fn_flashLights", 1.0f, 0.29f);
 
         /// Animate Random Sequence
 		CancelInvoke("fn_animSequence");

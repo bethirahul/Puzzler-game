@@ -1,0 +1,5 @@
+1. Are you able to see anything?
+A. Ya, a black dialogue window with start button, to start the game I guess.
+
+2. Is it okay? The size and font, etc.?
+A. Text looks a little big for me, and the finish panel seems far than the first one.
