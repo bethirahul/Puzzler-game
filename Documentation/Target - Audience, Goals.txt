@@ -1,0 +1,7 @@
+Target Audience: College students (Teens)
+People who are moderately interested in puzzles.
+Its my first app, so actually target any type of audience, mostly my parents, friends of my age, college graduates, people new to computer science industry. people who are new to smart phones.
+Goals:
+1. Visually appealing and follows a theme.
+2. Moderate animations and colors to look decent
+3. Comfortable mode for VR app.
