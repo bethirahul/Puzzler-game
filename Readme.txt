@@ -2,7 +2,8 @@ Puzzler Game
 Made by Rahul Bethi
 Part of VR Developer Udacity Nano-degree
 
-Only 3d models and materials were taken from course material. Remaining was built from scratch.
+Project Document: (Medium.com Blog link)
+https://medium.com/@rahulbethi/rahuls-puzzler-game-e1f402fc8118 
 
 Project is in 'Project 2017.2' folder.
 Documentation in 'Documentation' folder, includes screenshots and video.
